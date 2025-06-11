@@ -22,8 +22,8 @@ const MetaTags = ({ prefetchUrl }: { prefetchUrl: string }) => (
     <meta name="twitter:image" content="https://app.safe.global/images/social-share.png" />
 
     {/* CSP */}
-    <meta httpEquiv="Content-Security-Policy" content={ContentSecurityPolicy} />
-    {IS_PRODUCTION && <meta httpEquiv="Strict-Transport-Security" content={StrictTransportSecurity} />}
+    {/* <meta httpEquiv="Content-Security-Policy" content={ContentSecurityPolicy} />
+    {IS_PRODUCTION && <meta httpEquiv="Strict-Transport-Security" content={StrictTransportSecurity} />} */}
 
     {/* Prefetch the backend domain */}
     <link rel="dns-prefetch" href={prefetchUrl} />

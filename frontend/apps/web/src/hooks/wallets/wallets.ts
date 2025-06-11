@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { WC_PROJECT_ID } from '@/config/constants'
 import type { ChainInfo } from '@safe-global/safe-gateway-typescript-sdk'
 import type { InitOptions } from '@web3-onboard/core'
@@ -19,9 +20,10 @@ type WalletInit = WalletInits extends Array<infer U> ? U : never
 const walletConnectV2 = (chain: ChainInfo) => {
   // WalletConnect v2 requires a project ID
   if (!WC_PROJECT_ID) {
+    console.error('WalletConnect v2 requires a project ID')
     return () => null
   }
-
+  console.log('WC_PROJECT_ID before init ', WC_PROJECT_ID)
   return walletConnect({
     version: 2,
     projectId: WC_PROJECT_ID,

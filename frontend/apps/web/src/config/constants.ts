@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import chains from './chains'
 
 export const IS_PRODUCTION = process.env.NEXT_PUBLIC_IS_PRODUCTION === 'true'
@@ -8,8 +9,11 @@ export const DEFAULT_TESTNET_CHAIN_ID = +(process.env.NEXT_PUBLIC_DEFAULT_TESTNE
 export const DEFAULT_MAINNET_CHAIN_ID = +(process.env.NEXT_PUBLIC_DEFAULT_MAINNET_CHAIN_ID ?? chains.eth)
 
 // default chain ID used in the application
-export const DEFAULT_CHAIN_ID = IS_PRODUCTION ? DEFAULT_MAINNET_CHAIN_ID : DEFAULT_TESTNET_CHAIN_ID
-
+export let DEFAULT_CHAIN_ID = IS_PRODUCTION ? DEFAULT_MAINNET_CHAIN_ID : DEFAULT_TESTNET_CHAIN_ID
+console.log('DEFAULT_CHAIN_ID', DEFAULT_CHAIN_ID)
+if(!DEFAULT_CHAIN_ID) {
+  DEFAULT_CHAIN_ID=1995
+}
 export const GATEWAY_URL_PRODUCTION =
   process.env.NEXT_PUBLIC_GATEWAY_URL_PRODUCTION || 'https://safe-client.safe.global'
 export const GATEWAY_URL_STAGING = process.env.NEXT_PUBLIC_GATEWAY_URL_STAGING || 'https://safe-client.staging.5afe.dev'
@@ -21,12 +25,15 @@ export const LS_NAMESPACE = 'SAFE_v2__'
 export const LATEST_SAFE_VERSION = process.env.NEXT_PUBLIC_SAFE_VERSION || '1.4.1'
 
 // Access keys
-export const INFURA_TOKEN = process.env.NEXT_PUBLIC_INFURA_TOKEN || ''
+//export const INFURA_TOKEN = process.env.NEXT_PUBLIC_INFURA_TOKEN || ''
+export const INFURA_TOKEN = '66e35b8932754052acbddffc9c06ed38'
+
 export const SENTRY_DSN = process.env.NEXT_PUBLIC_SENTRY_DSN || ''
 export const BEAMER_ID = process.env.NEXT_PUBLIC_BEAMER_ID || ''
 
 // Wallets
-export const WC_PROJECT_ID = process.env.NEXT_PUBLIC_WC_PROJECT_ID || ''
+// export const WC_PROJECT_ID = process.env.NEXT_PUBLIC_WC_PROJECT_ID || ''
+export const WC_PROJECT_ID = 'c9dd90d5155da0ff35b2a20e5503bd83'
 export const TREZOR_APP_URL = 'app.safe.global'
 export const TREZOR_EMAIL = 'support@safe.global'
 

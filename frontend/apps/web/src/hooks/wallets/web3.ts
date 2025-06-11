@@ -24,6 +24,7 @@ const formatRpcServiceUrl = ({ authentication, value }: RpcUri, token: string): 
 }
 
 export const getRpcServiceUrl = (rpcUri: RpcUri): string => {
+  console.log('infura token loaded', INFURA_TOKEN)
   return formatRpcServiceUrl(rpcUri, INFURA_TOKEN)
 }
 

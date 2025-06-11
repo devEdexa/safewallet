@@ -236,6 +236,7 @@ const ReviewStep = ({ data, onSubmit, onBack, setStep }: StepRenderProps<NewSafe
 
       const customRpcUrl = customRpc[chain.chainId]
       const provider = createWeb3ReadOnly(chain, customRpcUrl)
+      console.log('provider', provider)
       if (!provider) return
 
       let safeAddress: string
@@ -253,6 +254,7 @@ const ReviewStep = ({ data, onSubmit, onBack, setStep }: StepRenderProps<NewSafe
         )
       } else {
         safeAddress = await predictAddressBasedOnReplayData(replayedSafeWithNonce, provider)
+        console.log('prdicted safeAddress', safeAddress)
       }
 
       for (const network of data.networks) {
@@ -271,6 +273,7 @@ const ReviewStep = ({ data, onSubmit, onBack, setStep }: StepRenderProps<NewSafe
       )
 
       gtmSetChainId(chain.chainId)
+      console.log('chainId', chain.chainId)
 
       if (isCounterfactualEnabled && payMethod === PayMethod.PayLater) {
         await router?.push({

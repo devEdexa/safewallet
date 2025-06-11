@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Core } from '@walletconnect/core'
 import { WalletKit, type WalletKitTypes } from '@reown/walletkit'
 import { buildApprovedNamespaces, getSdkError } from '@walletconnect/utils'
@@ -31,13 +32,13 @@ class WalletConnectWallet {
    */
   public async init() {
     if (this.web3Wallet) return
-
+    console.log('WC_PROJECT_ID loaded #', WC_PROJECT_ID)
     const core = new Core({
       projectId: WC_PROJECT_ID,
       logger: IS_PRODUCTION ? undefined : 'debug',
       customStoragePrefix: LS_NAMESPACE,
     })
-
+    console.log("core", core)
     const web3wallet = await WalletKit.init({
       core,
       metadata: SAFE_WALLET_METADATA,

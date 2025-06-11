@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Onboard, { type OnboardAPI } from '@web3-onboard/core'
 import type { ChainInfo } from '@safe-global/safe-gateway-typescript-sdk'
 import { getRpcServiceUrl } from '@/hooks/wallets/web3'
@@ -52,15 +53,15 @@ export const createOnboard = (
     chains: [
       ...chains,
 
-      {
-        id: numberToHex(parseInt('1995')),
-        label: 'edexa',
-        rpcUrl: 'https://rpc.testnet.edexa.com',
-        token: 'EDX',
-        color: '#3B82F6',
-        publicRpcUrl: 'https://rpc.testnet.edexa.com',
-        blockExplorerUrl: new URL('https://explorer.testnet.edexa.network').origin,
-      },
+      // {
+      //   id: numberToHex(parseInt('1995')),
+      //   label: 'edexa',
+      //   rpcUrl: 'https://rpc.testnet.edexa.com',
+      //   token: 'EDX',
+      //   color: '#3B82F6',
+      //   publicRpcUrl: 'https://rpc.testnet.edexa.com',
+      //   blockExplorerUrl: new URL('https://explorer.testnet.edexa.network').origin,
+      // },
       {
         id: numberToHex(parseInt('73799')),
         label: 'Volta',

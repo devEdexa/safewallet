@@ -143,6 +143,7 @@ services:
     tty: true
     volumes:
       - nginx-shared-cfg:/nginx
+      
     env_file:
       - container_env_files/cfg.env
     depends_on:
@@ -150,7 +151,7 @@ services:
         condition: service_healthy
       cgw-db:
         condition: service_healthy
-
+      
   # Safe Client Gateway
   cgw-redis:
     image: redis:alpine
@@ -163,15 +164,21 @@ services:
     depends_on:
       cgw-redis:
         condition: service_healthy
-
+#image: safeui  # Use your locally built image
   ui:
-    image: my-custom-frontend-image:latest
-    env_file:
-      - container_env_files/ui.env
-    depends_on:
-      - nginx
-    expose:
-      - 8080
+      image: safeui  # Use your locally built image
+      environment:
+        NEXT_PUBLIC_INFURA_TOKEN: 66e35b8932754052acbddffc9c06ed38
+        NEXT_PUBLIC_WC_PROJECT_ID: c9dd90d5155da0ff35b2a20e5503bd83
+        NEXT_PUBLIC_IS_OFFICIAL_HOST: "yes"
+        NEXT_PUBLIC_IS_PRODUCTION: "true"
+        NEXT_PUBLIC_GATEWAY_URL_PRODUCTION: http://localhost:8000/cgw
+        NEXT_PUBLIC_GATEWAY_URL_STAGING: http://localhost:8000/cgw
+        NEXT_PUBLIC_SAFE_VERSION: 1.4.1
+      depends_on:
+        - nginx
+      expose:
+        - 8080
 
   general-rabbitmq:
     image: rabbitmq:alpine
