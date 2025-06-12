@@ -166,7 +166,7 @@ services:
         condition: service_healthy
 #image: safeui  # Use your locally built image
   ui:
-      image: safeui  # Use your locally built image
+      image: safe-ui:latest
       environment:
         NEXT_PUBLIC_INFURA_TOKEN: 66e35b8932754052acbddffc9c06ed38
         NEXT_PUBLIC_WC_PROJECT_ID: c9dd90d5155da0ff35b2a20e5503bd83
