@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { WC_PROJECT_ID } from '@/config/constants'
 import type { ChainInfo } from '@safe-global/safe-gateway-typescript-sdk'
 import type { InitOptions } from '@web3-onboard/core'

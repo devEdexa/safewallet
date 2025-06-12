@@ -164,17 +164,12 @@ services:
     depends_on:
       cgw-redis:
         condition: service_healthy
-#image: safeui  # Use your locally built image
+
   ui:
-      image: safe-ui:latest
+      image: safe-ui:latest   #custom ui
       environment:
-        NEXT_PUBLIC_INFURA_TOKEN: 66e35b8932754052acbddffc9c06ed38
-        NEXT_PUBLIC_WC_PROJECT_ID: c9dd90d5155da0ff35b2a20e5503bd83
-        NEXT_PUBLIC_IS_OFFICIAL_HOST: "yes"
         NEXT_PUBLIC_IS_PRODUCTION: "true"
         NEXT_PUBLIC_GATEWAY_URL_PRODUCTION: http://localhost:8000/cgw
-        NEXT_PUBLIC_GATEWAY_URL_STAGING: http://localhost:8000/cgw
-        NEXT_PUBLIC_SAFE_VERSION: 1.4.1
       depends_on:
         - nginx
       expose:

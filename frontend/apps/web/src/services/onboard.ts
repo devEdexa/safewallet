@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import Onboard, { type OnboardAPI } from '@web3-onboard/core'
 import type { ChainInfo } from '@safe-global/safe-gateway-typescript-sdk'
 import { getRpcServiceUrl } from '@/hooks/wallets/web3'

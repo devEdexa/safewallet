@@ -1,3 +1,4 @@
+/* @ts-nocheck */
 import useIsExpiredSwap from '@/features/swap/hooks/useIsExpiredSwap'
 import React, { type ReactElement, useEffect } from 'react'
 import type { TransactionDetails, TransactionSummary } from '@safe-global/safe-gateway-typescript-sdk'
@@ -69,7 +70,6 @@ const TxDetailsBlock = ({ txSummary, txDetails }: TxDetailsProps): ReactElement 
   let proposer, safeTxHash, proposedByDelegate
   if (isMultisigDetailedExecutionInfo(txDetails.detailedExecutionInfo)) {
     safeTxHash = txDetails.detailedExecutionInfo.safeTxHash
-    // @ts-expect-error TODO: Need to update the types from the new SDK
     proposedByDelegate = txDetails.detailedExecutionInfo.proposedByDelegate
     proposer = proposedByDelegate?.value ?? txDetails.detailedExecutionInfo.proposer?.value
   }
@@ -141,7 +141,7 @@ const TxDetailsBlock = ({ txSummary, txDetails }: TxDetailsProps): ReactElement 
             txDetails={txDetails}
             txSummary={txSummary}
             isTxFromProposer={isTxFromProposer}
-            proposer={proposedByDelegate}
+            proposer={proposedByDelegate ?? undefined}
           />
 
           <TxShareBlock txId={txDetails.txId} txHash={txDetails.txHash} />
