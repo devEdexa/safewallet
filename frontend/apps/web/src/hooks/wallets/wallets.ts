@@ -22,7 +22,6 @@ const walletConnectV2 = (chain: ChainInfo) => {
     console.error('WalletConnect v2 requires a project ID')
     return () => null
   }
-  console.log('WC_PROJECT_ID before init ', WC_PROJECT_ID)
   return walletConnect({
     version: 2,
     projectId: WC_PROJECT_ID,

@@ -15,10 +15,6 @@ export const createOnboard = (
   rpcConfig: EnvState['rpc'] | undefined,
 ): OnboardAPI => {
   if (onboard) return onboard
-  // console.log("test 1")
-
-  // const wallets = getAllWallets(currentChain)
-
   const chains = chainConfigs.map((cfg) => ({
     // We cannot use ethers' toBeHex here as we do not want to pad it to an even number of characters.
     id: numberToHex(parseInt(cfg.chainId)),
@@ -38,7 +34,6 @@ export const createOnboard = (
       // mapping of wallet labels to filter here
     },
   })
-
   const walletConnect = walletConnectModule({
     version: 2,
     // Replace with your apiKey
@@ -61,20 +56,20 @@ export const createOnboard = (
       //   publicRpcUrl: 'https://rpc.testnet.edexa.com',
       //   blockExplorerUrl: new URL('https://explorer.testnet.edexa.network').origin,
       // },
-      {
-        id: numberToHex(parseInt('73799')),
-        label: 'Volta',
-        rpcUrl: 'https://volta-rpc.energyweb.org',
-        token: 'VT',
-        color: '#514989',
-        publicRpcUrl: 'https://volta-rpc.energyweb.org',
-        blockExplorerUrl: new URL('https://volta-explorer.energyweb.org').origin,
-      },
+      // {
+      //   id: numberToHex(parseInt('73799')),
+      //   label: 'Volta',
+      //   rpcUrl: 'https://volta-rpc.energyweb.org',
+      //   token: 'VT',
+      //   color: '#514989',
+      //   publicRpcUrl: 'https://volta-rpc.energyweb.org',
+      //   blockExplorerUrl: new URL('https://volta-explorer.energyweb.org').origin,
+      // },
     ],
 
     accountCenter: {
       mobile: { enabled: false },
-      desktop: { enabled: true },
+      desktop: { enabled: false },
     },
 
     notify: {
