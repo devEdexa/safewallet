@@ -166,14 +166,18 @@ services:
         condition: service_healthy
 
   ui:
-      image: safe-ui   #custom ui
-      environment:
+    image: safeglobal/safe-wallet-web:${UI_VERSION}
+    # env_file:
+    #   - container_env_files/ui.env
+    environment:
         NEXT_PUBLIC_IS_PRODUCTION: "true"
         NEXT_PUBLIC_GATEWAY_URL_PRODUCTION: http://localhost:8000/cgw
-      depends_on:
-        - nginx
-      expose:
-        - 8080
+        NEXT_PUBLIC_WC_PROJECT_ID: c9dd90d5155da0ff35b2a20e5503bd83
+        NEXT_PUBLIC_INFURA_TOKEN: 66e35b8932754052acbddffc9c06ed38
+    depends_on:
+      - nginx
+    expose:
+      - 8080
 
   general-rabbitmq:
     image: rabbitmq:alpine
